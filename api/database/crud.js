@@ -10,9 +10,23 @@ const createBook = (title, author, genre, publicationDate, isbn, callback) => {
   });
 };
 
-const readAllBooks = (callback) => {
-  console.log("test");
-  const query = "SELECT * FROM books";
+const readAllBooks = (
+  title,
+  author,
+  startDate,
+  endDate,
+  genre,
+  isbn,
+  callback
+) => {
+  const query = `SELECT *
+                  FROM books
+                  WHERE UPPER(title) LIKE UPPER("%${title}%") 
+                  AND UPPER(author) LIKE UPPER("%${author}%")
+                  AND UPPER(genre) LIKE UPPER("%${genre}%") 
+                  AND publicationDate >= '${startDate}' AND publicationDate <= '${endDate}' 
+                  AND isbn LIKE "%${isbn}%"
+                `;
   db.all(query, [], callback);
 };
 

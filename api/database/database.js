@@ -9,11 +9,13 @@ let db = new sqlite3.Database(dbName, (err) => {
     db.run(
       `CREATE TABLE IF NOT EXISTS books (
         entryID INTEGER PRIMARY KEY AUTOINCREMENT, 
-        title VARCHAR(50), 
-        author VARCHAR(50), 
-        genre VARCHAR(50), 
-        publicationDate DATE, 
-        isbn TEXT
+        title VARCHAR(50) UNIQUE NOT NULL, 
+        author VARCHAR(50) NOT NULL, 
+        genre VARCHAR(50) NOT NULL, 
+        publicationDate DATE NOT NULL, 
+        isbn VARCHAR(13) UNIQUE NOT NULL,
+        CONSTRAINT chk_genre CHECK (genre IN ("Fiction", "Mystery", "Non-Fiction", "Historical", "Romance", "Horror", "Comedy", "Fantasy", "Biography", "Thriller", "Crime", "Poetry", "Adventure"))
+        CONSTRAINT chk_isbn CHECK (LENGTH(isbn) == 10 OR LENGTH(isbn) == 13)
       )`,
       (err) => {
         if (err) {
