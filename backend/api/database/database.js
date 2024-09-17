@@ -5,7 +5,7 @@ let db = new sqlite3.Database(dbName, (err) => {
   if (err) {
     console.log(err.message);
   } else {
-    console.log("Conencted to the database!");
+    console.log("Connected to the database!");
     db.run(
       `CREATE TABLE IF NOT EXISTS books (
         entryID INTEGER PRIMARY KEY AUTOINCREMENT, 
