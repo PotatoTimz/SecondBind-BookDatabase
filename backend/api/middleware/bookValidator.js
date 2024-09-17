@@ -8,6 +8,8 @@ const validateBook = (title, author, genre, publicationDate, isbn) => {
     errors["title"] = "Title is required";
   } else if (title.length >= 50) {
     errors["title"] = "Title must not exceed 50 characters";
+  } else if (title.length === 0) {
+    errors["title"] = "Title must have at least 1 character";
   }
 
   // author
@@ -15,13 +17,16 @@ const validateBook = (title, author, genre, publicationDate, isbn) => {
     errors["author"] = "Author is required";
   } else if (author.length >= 50) {
     errors["author"] = "Author must not exceed 50 characters";
+  } else if (author.length === 0) {
+    errors["author"] = "Author must have at least 1 character";
   }
 
   // genre
   if (genre === undefined) {
     errors["genre"] = "Genre is required";
-  } else if (genres.has(genre)) {
-    errors["genre"] = `${genre} is not a valid genre`;
+  }
+  if (genre === "Select a Genre") {
+    errors["genre"] = "Please select a genre";
   }
 
   // publication date
