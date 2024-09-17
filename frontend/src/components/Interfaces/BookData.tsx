@@ -6,3 +6,12 @@ export interface BookData {
   publicationDate: string;
   isbn: string;
 }
+
+export const defaultBookData = {
+  entryID: 0,
+  title: "",
+  author: "",
+  genre: "",
+  publicationDate: "",
+  isbn: "",
+};
