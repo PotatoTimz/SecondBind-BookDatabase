@@ -12,6 +12,7 @@ function BookCard(props: Props) {
       <div>{props.bookData.genre}</div>
       <div>{props.bookData.publicationDate}</div>
       <div>{props.bookData.isbn}</div>
+      <div>test</div>
     </div>
   );
 }

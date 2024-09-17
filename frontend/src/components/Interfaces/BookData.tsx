@@ -11,7 +11,7 @@ export const defaultBookData = {
   entryID: 0,
   title: "",
   author: "",
-  genre: "",
+  genre: "Select a Genre",
   publicationDate: "",
   isbn: "",
 };
