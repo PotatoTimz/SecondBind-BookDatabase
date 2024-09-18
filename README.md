@@ -1,8 +1,8 @@
 # Second Bind Interview Assignment
 
 ## Stack 
-### Back-end: NodeJS, ExpressJS, SQLite
-### Front-end: ReactJS, Bootstrap
+#### Back-end: NodeJS, ExpressJS, SQLite
+#### Front-end: ReactJS, Bootstrap
 Additional libraries were also used like axios, cors, etc
 
 ## Install Guide
