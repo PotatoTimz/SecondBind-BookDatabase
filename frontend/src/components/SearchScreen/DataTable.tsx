@@ -1,8 +1,10 @@
+import { Link } from "react-router-dom";
 import { BookData } from "../Interfaces/BookData";
 import BookTableRow from "./BookTableRow";
 
 interface Props {
   bookList: Array<BookData>;
+  toggleAdd: () => void;
   toggleDelete: () => void;
   toggleUpdate: () => void;
   setSelectedBook: (book: BookData) => void;
@@ -12,6 +14,15 @@ function DataTable(props: Props) {
     <div className="container-fluid">
       <div className="row justify-content-center">
         <div className="col-lg-9 ">
+          <div className="text-center my-4">
+            <button
+              onClick={props.toggleAdd}
+              type="button"
+              className="btn btn-outline-success"
+            >
+              Add Book
+            </button>
+          </div>
           <div className="table-responsive">
             <table className="table table-striped table-hover">
               <thead className="thead-dark">

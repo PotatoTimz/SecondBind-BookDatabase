@@ -49,4 +49,9 @@ const deleteBook = (id, callback) => {
   db.run(query, id, callback);
 };
 
-module.exports = { createBook, readAllBooks, updateBook, deleteBook };
+module.exports = {
+  createBook,
+  readAllBooks,
+  updateBook,
+  deleteBook,
+};

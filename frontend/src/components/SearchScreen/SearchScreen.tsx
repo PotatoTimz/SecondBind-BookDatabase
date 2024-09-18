@@ -8,7 +8,8 @@ import { useNavigate } from "react-router-dom";
 import UpdateModal from "./UpdateModa";
 import ExportData from "./ExportData";
 import DataTable from "./DataTable";
-import FilterForm from "./Utilities/FilterForm/FilterForm";
+import FilterForm from "./FilterForm/FilterForm";
+import AddBookModal from "./AddBookModal";
 
 function SearhScreen() {
   const navigate = useNavigate();
@@ -16,7 +17,6 @@ function SearhScreen() {
   const [isLoading, setIsLoading] = useState<boolean>(true);
   const [bookList, setBookList] = useState<Array<BookData>>([]);
   const [selectedBook, setSelectedBook] = useState<BookData>(defaultBookData);
-  const setSelected = (book: BookData) => setSelectedBook(book);
 
   const [queryParams, setQueryParams] =
     useState<QueryParams>(defaultQueryParams);
@@ -33,6 +33,10 @@ function SearhScreen() {
   // Update Procedure
   const [updateModal, setUpdateModal] = useState<boolean>(false);
   const toggleUpdateModal = () => setUpdateModal(!updateModal);
+
+  // Add Procedure
+  const [addModal, setAddModal] = useState<boolean>(false);
+  const toggleAddModal = () => setAddModal(!addModal);
 
   useEffect(() => {
     setIsLoading(true);
@@ -53,6 +57,7 @@ function SearhScreen() {
           <ExportData bookList={bookList} />
           <DataTable
             bookList={bookList}
+            toggleAdd={toggleAddModal}
             toggleDelete={toggleDeleteModal}
             toggleUpdate={toggleUpdateModal}
             setSelectedBook={setSelectedBook}
@@ -68,6 +73,7 @@ function SearhScreen() {
             toggleModal={toggleUpdateModal}
             bookData={selectedBook}
           />
+          <AddBookModal isOpen={addModal} toggleModal={toggleAddModal} />
         </>
       )}
     </>

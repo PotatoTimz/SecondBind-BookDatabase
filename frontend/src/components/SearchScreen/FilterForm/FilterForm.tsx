@@ -1,8 +1,5 @@
 import { useState } from "react";
-import {
-  defaultQueryParams,
-  QueryParams,
-} from "../../../Interfaces/QueryParams";
+import { defaultQueryParams, QueryParams } from "../../Interfaces/QueryParams";
 import BasicSearch from "./BasicSearch";
 import AdvanceSearch from "./AdvanceSearch";
 

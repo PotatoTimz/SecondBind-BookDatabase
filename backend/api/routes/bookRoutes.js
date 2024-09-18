@@ -3,6 +3,7 @@ const router = express.Router();
 
 const {
   getAllBooks,
+  getBookTotal,
   postBook,
   putBook,
   delBook,

@@ -1,9 +1,6 @@
 import { useEffect, useState } from "react";
-import {
-  defaultQueryParams,
-  QueryParams,
-} from "../../../Interfaces/QueryParams";
-import { genres } from "../../../Utilities/GenreList";
+import { defaultQueryParams, QueryParams } from "../../Interfaces/QueryParams";
+import { genres } from "../../Utilities/GenreList";
 
 interface Props {
   setQuery: (query: QueryParams) => void;

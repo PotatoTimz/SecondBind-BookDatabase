@@ -1,8 +1,5 @@
 import { useEffect, useState } from "react";
-import {
-  defaultQueryParams,
-  QueryParams,
-} from "../../../Interfaces/QueryParams";
+import { defaultQueryParams, QueryParams } from "../../Interfaces/QueryParams";
 
 interface Props {
   setQuery: (query: QueryParams) => void;

@@ -4,7 +4,7 @@ import { QueryParams } from "../../Interfaces/QueryParams";
 const fetchBooks = async (queryParams: QueryParams) => {
   try {
     const response = await axios.get(
-      `http://localhost:3000/api/books?title=${queryParams.title}&author=${queryParams.author}&startDate=${queryParams.startDate}&endDate=${queryParams.endDate}&genre=${queryParams.genre}&isbn=${queryParams.isbn}`
+      `http://localhost:3000/api/books?title=${queryParams.title}&author=${queryParams.author}&startDate=${queryParams.startDate}&endDate=${queryParams.endDate}&genre=${queryParams.genre}&isbn=${queryParams.isbn}&pageLimit=1000&page=0`
     );
 
     if (!response.status) {
