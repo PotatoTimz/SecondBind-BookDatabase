@@ -1,6 +1,17 @@
 const sqlite3 = require("sqlite3").verbose();
 const dbName = "myDatabase.db";
 
+/*
+ Creates the table book for the database
+ Attributes:
+  entryID: PK and autoincrements
+  title: Unique
+  author:
+  genre: must be one of the predefined genres
+  publicationDate
+  isbn: must be 10 or 13 characters and must be unique
+*/
+
 let db = new sqlite3.Database(dbName, (err) => {
   if (err) {
     console.log(err.message);

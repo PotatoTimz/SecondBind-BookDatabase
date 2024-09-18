@@ -1,5 +1,9 @@
-const asyncHandler = require("express-async-handler");
+/*
+  API functionality, operations that are performed when a specific route is called from the front-end
+  Interacts with the database to perform CRUD queries and than sends information back to the client
+*/
 
+const asyncHandler = require("express-async-handler");
 const {
   createBook,
   updateBook,
@@ -8,6 +12,7 @@ const {
 } = require("../database/crud");
 const bookValidator = require("../middleware/bookValidator");
 
+// Gets all books based on search parameters. If queries are empty will automatically fill with empty strings
 const getAllBooks = asyncHandler(async (req, res) => {
   const title = req.query.title || "";
   const author = req.query.author || "";
@@ -25,6 +30,7 @@ const getAllBooks = asyncHandler(async (req, res) => {
   });
 });
 
+// Post book using information from the client. Uses middlewear to make sure that information is valid
 const postBook = asyncHandler(async (req, res) => {
   const { title, author, genre, publicationDate, isbn } = req.body;
   const errors = bookValidator(title, author, genre, publicationDate, isbn);
@@ -45,6 +51,7 @@ const postBook = asyncHandler(async (req, res) => {
   }
 });
 
+// Put book using information from the client. Uses middlewear to make sure that information is valid
 const putBook = asyncHandler(async (req, res) => {
   const { title, author, genre, publicationDate, isbn } = req.body;
   const { id } = req.params;
@@ -65,6 +72,7 @@ const putBook = asyncHandler(async (req, res) => {
   }
 });
 
+// Deletes book given the entry number
 const delBook = asyncHandler(async (req, res) => {
   const { id } = req.params;
 

@@ -1,3 +1,6 @@
+/*
+  Routes that the client can use to access the server / API
+*/
 const express = require("express");
 const router = express.Router();
 

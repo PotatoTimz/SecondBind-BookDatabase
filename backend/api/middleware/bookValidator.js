@@ -1,9 +1,9 @@
 const genres = require("../utilities/genres");
 
+// Creates custom error based on the problems of the user input (used for adding and updating database)
 const validateBook = (title, author, genre, publicationDate, isbn) => {
   errors = {};
 
-  // title
   if (title === undefined) {
     errors["title"] = "Title is required";
   } else if (title.length >= 50) {

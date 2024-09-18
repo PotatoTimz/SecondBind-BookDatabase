@@ -1,3 +1,5 @@
+// List of possible genres. Not comprehensive, there are many that I am probably missing.
+
 genres = new Set(
   "Fiction",
   "Mystery",

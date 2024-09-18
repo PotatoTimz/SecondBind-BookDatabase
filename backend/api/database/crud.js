@@ -1,6 +1,10 @@
 const db = require("./database");
 
-// CREATE
+/*
+  CRUD queries to interact with the database
+*/
+
+// CREATE a book using the given information
 const createBook = (title, author, genre, publicationDate, isbn, callback) => {
   console.log("creating book");
   const query =
@@ -10,6 +14,7 @@ const createBook = (title, author, genre, publicationDate, isbn, callback) => {
   });
 };
 
+// READ all books in the database using the given parameters.
 const readAllBooks = (
   title,
   author,
@@ -30,6 +35,7 @@ const readAllBooks = (
   db.all(query, [], callback);
 };
 
+// Update book
 const updateBook = (
   id,
   title,
@@ -44,6 +50,7 @@ const updateBook = (
   db.run(query, [title, author, genre, publicationDate, isbn, id], callback);
 };
 
+// Delete book
 const deleteBook = (id, callback) => {
   const query = "DELETE FROM books WHERE entryId = ?";
   db.run(query, id, callback);
