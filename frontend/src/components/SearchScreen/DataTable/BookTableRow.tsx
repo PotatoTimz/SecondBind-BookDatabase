@@ -1,5 +1,5 @@
-import { BookData } from "../Interfaces/BookData";
-import DeleteModal from "./DeleteModal";
+import { BookData } from "../../Interfaces/BookData";
+import DeleteModal from "../Modals/DeleteModal";
 
 interface Props {
   bookData: BookData;

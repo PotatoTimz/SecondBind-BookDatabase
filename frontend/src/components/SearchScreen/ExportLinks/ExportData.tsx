@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import { BookData } from "../Interfaces/BookData";
+import { BookData } from "../../Interfaces/BookData";
 import { CSVLink } from "react-csv";
 
 interface Props {

@@ -1,7 +1,7 @@
 import Modal from "react-bootstrap/esm/Modal";
-import { BookData, defaultBookData } from "../Interfaces/BookData";
+import { BookData, defaultBookData } from "../../Interfaces/BookData";
 import { useEffect, useState } from "react";
-import { genres } from "../Utilities/GenreList";
+import { genres } from "../../Utilities/GenreList";
 import { useNavigate } from "react-router-dom";
 import axios, { AxiosError } from "axios";
 

@@ -1,6 +1,6 @@
 import { useState } from "react";
-import { BookData, defaultBookData } from "../Interfaces/BookData";
-import { genres } from "../Utilities/GenreList";
+import { BookData, defaultBookData } from "../../Interfaces/BookData";
+import { genres } from "../../Utilities/GenreList";
 import axios, { AxiosError } from "axios";
 import { useNavigate } from "react-router-dom";
 import { Modal } from "react-bootstrap";

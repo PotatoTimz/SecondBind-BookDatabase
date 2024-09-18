@@ -3,13 +3,13 @@ import { BookData, defaultBookData } from "../Interfaces/BookData";
 import fetchBooks from "./Utilities/FetchBookData";
 import { defaultQueryParams, QueryParams } from "../Interfaces/QueryParams";
 import { deleteBook } from "./Utilities/DeleteBookData";
-import DeleteModal from "./DeleteModal";
+import DeleteModal from "./Modals/DeleteModal";
 import { useNavigate } from "react-router-dom";
-import UpdateModal from "./UpdateModa";
-import ExportData from "./ExportData";
-import DataTable from "./DataTable";
+import UpdateModal from "./Modals/UpdateModa";
+import ExportData from "./ExportLinks/ExportData";
+import DataTable from "./DataTable/DataTable";
 import FilterForm from "./FilterForm/FilterForm";
-import AddBookModal from "./AddBookModal";
+import AddBookModal from "./Modals/AddBookModal";
 
 function SearhScreen() {
   const navigate = useNavigate();

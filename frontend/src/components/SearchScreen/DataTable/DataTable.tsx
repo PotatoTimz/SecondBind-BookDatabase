@@ -1,5 +1,4 @@
-import { Link } from "react-router-dom";
-import { BookData } from "../Interfaces/BookData";
+import { BookData } from "../../Interfaces/BookData";
 import BookTableRow from "./BookTableRow";
 
 interface Props {
