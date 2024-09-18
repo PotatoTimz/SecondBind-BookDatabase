@@ -2,10 +2,13 @@ import { useEffect, useState } from "react";
 import { BookData, defaultBookData } from "../Interfaces/BookData";
 import fetchBooks from "./Utilities/FetchBookData";
 import { defaultQueryParams, QueryParams } from "../Interfaces/QueryParams";
-import BookTableRow from "./BookTableRow";
 import { deleteBook } from "./Utilities/DeleteBookData";
 import DeleteModal from "./DeleteModal";
 import { useNavigate } from "react-router-dom";
+import UpdateModal from "./UpdateModa";
+import ExportData from "./ExportData";
+import DataTable from "./DataTable";
+import FilterForm from "./Utilities/FilterForm/FilterForm";
 
 function SearhScreen() {
   const navigate = useNavigate();
@@ -17,13 +20,19 @@ function SearhScreen() {
 
   const [queryParams, setQueryParams] =
     useState<QueryParams>(defaultQueryParams);
+  const setQuery = (query: QueryParams) => setQueryParams(query);
 
+  // Delete Procedure
   const [deleteModal, setDeleteModal] = useState<boolean>(false);
   const toggleDeleteModal = () => setDeleteModal(!deleteModal);
   const deleteCurrentBook = () => {
     deleteBook(String(selectedBook.entryID));
     navigate(0);
   };
+
+  // Update Procedure
+  const [updateModal, setUpdateModal] = useState<boolean>(false);
+  const toggleUpdateModal = () => setUpdateModal(!updateModal);
 
   useEffect(() => {
     setIsLoading(true);
@@ -35,48 +44,29 @@ function SearhScreen() {
 
   return (
     <>
+      <FilterForm setQuery={setQuery} />
+
       {isLoading ? (
         <div>Loading Data</div>
       ) : (
         <>
-          <div className="container-fluid">
-            <div className="row justify-content-center">
-              <div className="col-lg-9 ">
-                <table className="table table-striped table-hover">
-                  <thead className="thead-dark">
-                    <tr>
-                      <th scope="col">Database No</th>
-                      <th scope="col">Title</th>
-                      <th scope="col">Author</th>
-                      <th scope="col">Genre</th>
-                      <th scope="col">Publication Date</th>
-                      <th scope="col">ISBN</th>
-                      <th scope="col" className="text-center">
-                        <i className="bi bi-gear"></i>
-                      </th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    {bookList.map((book: BookData) => {
-                      return (
-                        <BookTableRow
-                          key={book.isbn}
-                          bookData={book}
-                          toggleDeleteModal={toggleDeleteModal}
-                          setSelectedBook={setSelected}
-                        />
-                      );
-                    })}
-                  </tbody>
-                </table>
-              </div>
-            </div>
-          </div>
+          <ExportData bookList={bookList} />
+          <DataTable
+            bookList={bookList}
+            toggleDelete={toggleDeleteModal}
+            toggleUpdate={toggleUpdateModal}
+            setSelectedBook={setSelectedBook}
+          ></DataTable>
           <DeleteModal
             isOpen={deleteModal}
             toggleModal={toggleDeleteModal}
             bookTitle={selectedBook.title}
             deleteBook={deleteCurrentBook}
+          />
+          <UpdateModal
+            isOpen={updateModal}
+            toggleModal={toggleUpdateModal}
+            bookData={selectedBook}
           />
         </>
       )}

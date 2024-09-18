@@ -48,16 +48,21 @@ const postBook = asyncHandler(async (req, res) => {
 const putBook = asyncHandler(async (req, res) => {
   const { title, author, genre, publicationDate, isbn } = req.body;
   const { id } = req.params;
+  const errors = bookValidator(title, author, genre, publicationDate, isbn);
 
-  updateBook(id, title, author, genre, publicationDate, isbn, (err) => {
-    if (err) {
-      res.status(500).send(err.message);
-    } else {
-      res.status(200).send({
-        message: "Book has been succesfully updates",
-      });
-    }
-  });
+  if (Object.keys(errors).length === 0) {
+    updateBook(id, title, author, genre, publicationDate, isbn, (err) => {
+      if (err) {
+        res.status(500).send(err.message);
+      } else {
+        res.status(200).send({
+          message: "Book has been succesfully updates",
+        });
+      }
+    });
+  } else {
+    res.status(400).send(errors);
+  }
 });
 
 const delBook = asyncHandler(async (req, res) => {

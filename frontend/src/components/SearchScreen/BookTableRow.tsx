@@ -5,6 +5,7 @@ interface Props {
   bookData: BookData;
   setSelectedBook: (book: BookData) => void;
   toggleDeleteModal: () => void;
+  toggleUpdateModal: () => void;
 }
 function BookTableRow(props: Props) {
   return (
@@ -26,7 +27,13 @@ function BookTableRow(props: Props) {
           >
             <i className="bi bi-trash3-fill"></i>
           </button>
-          <button className="btn mx-1 btn-outline-primary">
+          <button
+            onClick={() => {
+              props.setSelectedBook(props.bookData);
+              props.toggleUpdateModal();
+            }}
+            className="btn mx-1 btn-outline-primary"
+          >
             <i className="bi bi-pencil-fill"></i>
           </button>
         </td>
