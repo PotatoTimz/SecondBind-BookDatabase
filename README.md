@@ -51,7 +51,8 @@ Contains all the possible routes that front-end uses to interact with the back-e
 #### 2) Middleware
 Data validation to confirm that inputted information for updating and adding books is correct. Will return custom error messages based on the type of error that is detected.
 #### 3) Controller
-Functionality of each route. Interact with the database to perform CRUD operations and than send info back to the front-end
+Functionality of each route. Interact with the database to perform CRUD operations and then send info back to the front end
 
 #### Design Problems
 1) The genre list is hard coded and each book can only be associated with one genre. Normally books can have multiple genres. This can be solved by creating additional tables to represent a many-to-many relationship.
+2) Pagination can be used to further query the database so that information can be sent to the front-end in slices.
